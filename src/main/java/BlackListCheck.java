@@ -39,7 +39,7 @@ public class BlackListCheck extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        RequestDispatcher disp = request.getRequestDispatcher("/firstJsp.jsp");
+        RequestDispatcher disp = request.getRequestDispatcher("/pages/creditRequestForm.jsp");
         disp.forward(request, response);
 
     }

@@ -11,7 +11,7 @@
     <title>Credit Request Page</title>
 
     <style>
-        <%@ include file="style.css"%>
+        <%@ include file="../css/style.css"%>
     </style>
 
 </head>
