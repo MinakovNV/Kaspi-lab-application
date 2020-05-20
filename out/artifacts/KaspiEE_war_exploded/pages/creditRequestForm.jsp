@@ -18,13 +18,11 @@
 
 </head>
 <body>
-
-<style>
-    body{
-        background-color: #6A6C6E; /* Цвет фона веб-страницы */
-    }
-</style>
-
+    <style>
+        body{
+            background-color: #6A6C6E;
+        }
+    </style>
     <div class="container">
         <form id="contact" action="" method="post">
             <h3>Your credit request</h3>
@@ -49,8 +47,6 @@
     </div>
 
 </body>
-
-
 
 
 </html>

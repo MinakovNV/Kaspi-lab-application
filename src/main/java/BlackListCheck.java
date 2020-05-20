@@ -37,6 +37,9 @@ public class BlackListCheck extends HttpServlet {
             e.printStackTrace();
         }
 
+        RequestDispatcher disp = request.getRequestDispatcher("/pages/creditResultForm.jsp");
+        disp.forward(request, response);
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
