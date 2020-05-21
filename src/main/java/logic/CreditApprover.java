@@ -24,6 +24,7 @@ public class CreditApprover {
                     && getArr().get(i).getLname().equalsIgnoreCase(lname) && getArr().get(i).getIin().equalsIgnoreCase(IIN)){
                 System.out.println("Match Found: ID and IIN");
                 System.out.println("Cause : " + getArr().get(i).getCause());
+                cause = getArr().get(i).getCause();
                 return false;}
         }
         return true;

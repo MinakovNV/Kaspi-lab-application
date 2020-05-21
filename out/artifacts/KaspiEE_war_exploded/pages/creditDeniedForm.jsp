@@ -31,7 +31,7 @@
         <h3>Credit request result: </h3>
 
         <h4><%=request.getAttribute("result")%></h4>
-
+        <h4><%=request.getAttribute("cause")%></h4>
         <fieldset>
             <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Reason</button>
             <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Exit</button>
