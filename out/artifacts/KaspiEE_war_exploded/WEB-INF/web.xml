@@ -26,4 +26,14 @@
     </servlet-mapping>
 
 
+    <servlet>
+        <servlet-name>DeniedServlet</servlet-name>
+        <servlet-class>DeniedServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeniedServlet</servlet-name>
+        <url-pattern>/response_denied</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>

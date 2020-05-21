@@ -19,13 +19,26 @@
 
 </head>
 <body>
-<style>
-    body{
-        background-color: #6A6C6E;
-    }
-</style>
 
+    <style>
+        body{
+            background-color: #6A6C6E;
+        }
+    </style>
 
+    <div class="container">
+        <form id="contact" action="" method="post">
+            <h3>Credit request result: </h3>
+
+            <h4><%=request.getAttribute("result")%></h4>
+
+            <fieldset>
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Exit</button>
+            </fieldset>
+
+            <p class="copyright">Designed 4 <a href="https://kaspi.kz" target="_blank" title="">Kaspi.kz</a></p>
+        </form>
+    </div>
 
 </body>
 
