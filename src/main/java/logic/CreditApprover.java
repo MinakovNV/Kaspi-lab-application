@@ -1,7 +1,8 @@
 package logic;
 
+import Logger.MessageLogger;
+
 import java.sql.SQLException;
-import java.util.logging.Logger;
 
 import static database.DBConnection.*;
 
