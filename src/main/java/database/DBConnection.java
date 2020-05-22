@@ -1,7 +1,7 @@
-package main.java.database;
+package database;
 
-
-import main.java.logic.BlackListUsers;
+import logic.BlackListUsers;
+import logic.MessageLogger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,15 +15,21 @@ public class DBConnection {
     private static final String password = "admin";
     private static ArrayList<BlackListUsers> arr;
 
+    public static MessageLogger lg;
+
     private static Connection con;
     private static Statement st;
     private static ResultSet rs;
 
     public static void dbConnector() throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        con = DriverManager.getConnection(url, user, password);
-        st = con.createStatement();
-        System.out.println("Connection success!");
+        if(con == null){
+            lg = new MessageLogger();
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(url, user, password);
+            st = con.createStatement();
+            lg.message("Connection success!");
+        }
+        lg.message("Already connected!");
     }
 
     public static void uploadBlackList() throws ClassNotFoundException, SQLException {
@@ -45,7 +51,7 @@ public class DBConnection {
 
         }
         st.close();
-        System.out.println("Data successfully uploaded!");
+        lg.message("Data successfully uploaded!");
     }
 
     public static void showBlackList(){

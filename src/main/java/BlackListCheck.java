@@ -1,16 +1,12 @@
 
-import main.java.database.DBConnection;
-import main.java.logic.CreditApprover;
+import logic.CreditApprover;
 
-import javax.imageio.ImageIO;
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.sql.SQLException;
 
@@ -36,13 +32,11 @@ public class BlackListCheck extends HttpServlet {
 
             if (flagIDIIN){
                 // одобрен
-                System.out.println(result_1);
                 request.setAttribute("flag", 1);
                 request.setAttribute("result", result_1);
                 disp = request.getRequestDispatcher("/pages/creditResultForm.jsp");
             }else {
                 // не одобрен
-                System.out.println(result_2);
                 request.setAttribute("flag", 0);
                 request.setAttribute("result", result_2);
                 request.setAttribute("cause", ca.getCause());

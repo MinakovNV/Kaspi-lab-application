@@ -1,6 +1,6 @@
-package main.java.logic;
+package logic;
 
-import main.java.logic.Person;
+import logic.Person;
 
 public class BlackListUsers extends Person {
     private String cause;

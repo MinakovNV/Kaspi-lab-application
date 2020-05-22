@@ -1,4 +1,4 @@
-package main.java.logic;
+package logic;
 
 public class Person {
     private int id;

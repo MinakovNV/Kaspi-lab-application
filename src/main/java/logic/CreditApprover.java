@@ -1,18 +1,17 @@
-package main.java.logic;
-
-import com.mysql.cj.jdbc.JdbcConnection;
-import main.java.database.DBConnection;
+package logic;
 
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
-import static main.java.database.DBConnection.*;
+import static database.DBConnection.*;
 
 public class CreditApprover {
 
     private String cause = "No cause";
+    public MessageLogger lg = new MessageLogger();
 
     public CreditApprover() throws SQLException, ClassNotFoundException {
-        System.out.println("Credit Approver started!");
+        lg.message("Credit Approver started!");
         dbConnector();
         uploadBlackList();
         showBlackList();
@@ -22,10 +21,11 @@ public class CreditApprover {
         for (int i = 0; i<getArr().size(); i++){
             if(getArr().get(i).getFname().equalsIgnoreCase(fname) && getArr().get(i).getSname().equalsIgnoreCase(sname)
                     && getArr().get(i).getLname().equalsIgnoreCase(lname) && getArr().get(i).getIin().equalsIgnoreCase(IIN)){
-                System.out.println("Match Found: ID and IIN");
-                System.out.println("Cause : " + getArr().get(i).getCause());
+                lg.message("Match Found: ID and IIN");
+                lg.message("Cause : " + getArr().get(i).getCause());
                 cause = getArr().get(i).getCause();
-                return false;}
+                return false;
+            }
         }
         return true;
     }
@@ -33,8 +33,8 @@ public class CreditApprover {
     public boolean approveByIin(String IIN){
         for (int i = 0; i<getArr().size(); i++){
             if(getArr().get(i).getIin().equalsIgnoreCase(IIN)){
-                System.out.println("Match Found: IIN");
-                System.out.println("Cause : " + getArr().get(i).getCause());
+                lg.message("Match Found: IIN");
+                lg.message("Cause : " + getArr().get(i).getCause());
                 return false;
             }
         }
@@ -45,9 +45,10 @@ public class CreditApprover {
         for (int i = 0; i<getArr().size(); i++){
             if(getArr().get(i).getFname().equalsIgnoreCase(fname) && getArr().get(i).getSname().equalsIgnoreCase(sname)
                     && getArr().get(i).getLname().equalsIgnoreCase(lname) ){
-                System.out.println("Match Found: ID");
-                System.out.println("Cause : " + getArr().get(i).getCause());
-                return false;}
+                lg.message("Match Found: ID");
+                lg.message("Cause : " + getArr().get(i).getCause());
+                return false;
+            }
         }
         return true;
     }
@@ -56,7 +57,7 @@ public class CreditApprover {
         return cause;
     }
 
-    public void setCause(String cause_1) {
+    public void setCause(String cause) {
         this.cause = cause;
     }
 }

@@ -33,7 +33,7 @@
             <h4><%=request.getAttribute("result")%></h4>
 
             <fieldset>
-                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Exit</button>
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Continue</button>
             </fieldset>
 
             <p class="copyright">Designed 4 <a href="https://kaspi.kz" target="_blank" title="">Kaspi.kz</a></p>
