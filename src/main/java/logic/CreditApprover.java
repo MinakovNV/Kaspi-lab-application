@@ -8,14 +8,18 @@ import static database.DBConnection.*;
 
 public class CreditApprover {
 
+    private static boolean flag = true;
     private String cause = "No cause";
     public MessageLogger lg = new MessageLogger();
 
     public CreditApprover() throws SQLException, ClassNotFoundException {
         lg.message("Credit Approver started!");
-        dbConnector();
-        uploadBlackList();
-        showBlackList();
+        if(flag) {
+            dbConnector();
+            uploadBlackList();
+            //showBlackList();
+            flag = false;
+        }
     }
 
     public boolean approveByIdIIN(String fname, String sname, String lname, String IIN){

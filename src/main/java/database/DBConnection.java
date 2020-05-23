@@ -28,8 +28,8 @@ public class DBConnection {
             con = DriverManager.getConnection(url, user, password);
             st = con.createStatement();
             lg.message("Connection success!");
-        }
-        lg.message("Already connected!");
+        } else {
+            lg.message("Already connected!");}
     }
 
     public static void uploadBlackList() throws ClassNotFoundException, SQLException {
@@ -51,6 +51,7 @@ public class DBConnection {
 
         }
         st.close();
+        con.close();
         lg.message("Data successfully uploaded!");
     }
 

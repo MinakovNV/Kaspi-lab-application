@@ -8,7 +8,7 @@
     </listener>
     <servlet>
         <servlet-name>BlackListCheck</servlet-name>
-        <servlet-class>BlackListCheck</servlet-class>
+        <servlet-class>Servlets.BlackListCheck</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
@@ -18,7 +18,7 @@
 
     <servlet>
         <servlet-name>ResponseServlet</servlet-name>
-        <servlet-class>ResponseServlet</servlet-class>
+        <servlet-class>Servlets.ResponseServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ResponseServlet</servlet-name>
@@ -28,7 +28,7 @@
 
     <servlet>
         <servlet-name>DeniedServlet</servlet-name>
-        <servlet-class>DeniedServlet</servlet-class>
+        <servlet-class>Servlets.DeniedServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DeniedServlet</servlet-name>
