@@ -1,7 +1,7 @@
 package database;
 
+import logging.MessageLogger;
 import logic.BlackListUsers;
-import Logger.MessageLogger;
 
 import java.sql.*;
 import java.util.ArrayList;

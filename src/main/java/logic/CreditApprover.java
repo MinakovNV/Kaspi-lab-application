@@ -1,6 +1,6 @@
 package logic;
 
-import Logger.MessageLogger;
+import logging.MessageLogger;
 
 import java.sql.SQLException;
 

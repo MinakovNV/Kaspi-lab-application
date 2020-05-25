@@ -1,5 +1,3 @@
-package Servlets;
-
 import logic.CreditApprover;
 
 import javax.servlet.RequestDispatcher;
