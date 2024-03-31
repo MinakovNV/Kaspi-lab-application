@@ -10,14 +10,22 @@ public final class Error {
         return e.getMessage();
     }
 
-    public static void raise(String code, Object... args) throws Exception { throw new Exception(_message(code, args)); }
+    public static void raise(String code, Object... args) throws Exception {
+        throw new Exception(message(code, args));
+    }
 
     private static String checkCode(String code) throws Exception {
-        if (StringUtils.isEmpty(code)) { raise(ERROR_1); }
+        if (StringUtils.isEmpty(code)) {
+            throw new IllegalArgumentException(ERROR_1);
+        }
         return code.trim().toUpperCase();
     }
 
-    private static String format(String code, Object... args) throws Exception { return String.format(format(code), args); }
+    private static String format(String code, Object... args) {
+        return String.format(code, args);
+    }
 
-    private static String _message(String code, Object ... args) throws Exception { return format(checkCode(code), args); }
+    private static String message(String code, Object... args) throws Exception {
+        return format(checkCode(code), args);
+    }
 }
