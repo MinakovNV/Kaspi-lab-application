@@ -1,57 +1,49 @@
 package logic;
 
+import database.BlackListRepository;
 import logging.MessageLogger;
-
-import java.sql.SQLException;
-
-import static database.DBConnection.*;
+import model.BlackListEntry;
 
 public class CreditApprover {
 
-    private static boolean flag = true;
+    private final BlackListRepository blackListRepository;
+    private final MessageLogger logger;
     private String cause = "No cause";
-    public MessageLogger lg = new MessageLogger();
 
-    public CreditApprover() throws SQLException, ClassNotFoundException {
-        lg.message("Credit Approver started!");
-        if(flag) {
-            dbConnector();
-            uploadBlackList();
-            //showBlackList();
-            flag = false;
-        }
+    public CreditApprover(BlackListRepository blackListRepository, MessageLogger logger) {
+        this.blackListRepository = blackListRepository;
+        this.logger = logger;
+        this.logger.message("Credit Approver started!");
     }
 
-    public boolean approveByIdIIN(String fname, String sname, String lname, String IIN){
-        for (int i = 0; i<getArr().size(); i++){
-            if(getArr().get(i).getFname().equalsIgnoreCase(fname) && getArr().get(i).getSname().equalsIgnoreCase(sname)
-                    && getArr().get(i).getLname().equalsIgnoreCase(lname) && getArr().get(i).getIin().equalsIgnoreCase(IIN)){
-                lg.message("Match Found: ID and IIN");
-                lg.message("Cause : " + getArr().get(i).getCause());
-                cause = getArr().get(i).getCause();
+    public boolean approveByIdIIN(String fname, String sname, String lname, String IIN) {
+        for (BlackListEntry entry : blackListRepository.getAllEntries()) {
+            if (entry.matchesIdAndIin(fname, sname, lname, IIN)) {
+                logger.message("Match Found: ID and IIN");
+                logger.message("Cause : " + entry.getCause());
+                cause = entry.getCause();
                 return false;
             }
         }
         return true;
     }
 
-    public boolean approveByIin(String IIN){
-        for (int i = 0; i<getArr().size(); i++){
-            if(getArr().get(i).getIin().equalsIgnoreCase(IIN)){
-                lg.message("Match Found: IIN");
-                lg.message("Cause : " + getArr().get(i).getCause());
+    public boolean approveByIin(String IIN) {
+        for (BlackListEntry entry : blackListRepository.getAllEntries()) {
+            if (entry.getIin().equalsIgnoreCase(IIN)) {
+                logger.message("Match Found: IIN");
+                logger.message("Cause : " + entry.getCause());
                 return false;
             }
         }
         return true;
     }
 
-    public boolean approveById(String fname, String sname, String lname){
-        for (int i = 0; i<getArr().size(); i++){
-            if(getArr().get(i).getFname().equalsIgnoreCase(fname) && getArr().get(i).getSname().equalsIgnoreCase(sname)
-                    && getArr().get(i).getLname().equalsIgnoreCase(lname) ){
-                lg.message("Match Found: ID");
-                lg.message("Cause : " + getArr().get(i).getCause());
+    public boolean approveById(String fname, String sname, String lname) {
+        for (BlackListEntry entry : blackListRepository.getAllEntries()) {
+            if (entry.matchesId(fname, sname, lname)) {
+                logger.message("Match Found: ID");
+                logger.message("Cause : " + entry.getCause());
                 return false;
             }
         }
